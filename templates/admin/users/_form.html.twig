@@ -1,0 +1,19 @@
+{{ form_start(form) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(form) }}
+</div>
+
+<div class="">
+    <div class="col">
+        {{ form_row(form.pseudo) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.email) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.password) }}
+    </div>
+</div>
+
+    <button class="btn">{{ button_label|default('Créer') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+    {% block header %}{{parent()}}{% endblock %}
+
+    {{ form_start(form)}}
+    {% set _block = block('error_message') %}
+
+    {% if _block is not empty %}
+    <div class="alert alert-danger text-center">
+    {% block error_message %}{{ form_errors(form) }}{{ form_errors(form.password.children['first']) }}{{ form_errors(form.password.children['second']) }}{% endblock %}
+    </div>
+    {% endif %}
+
+    <h1 class="{% if _block is empty %}mt-5{% endif %}">Inscription</h1>
+
+    <div class="form_container col-xl-3 col-lg-4 col-md-6 col-sm-10 mx-auto mt-3 d-flex flex-column align-items-center" >
+        <div class="text-center">
+            <div class="col">
+                {{ form_row(form.pseudo, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col">
+                {{ form_label(form.password.children['first']) }}
+                {{ form_widget(form.password.children['first'], {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col">
+                {{ form_label(form.password.children['second']) }}
+                {{ form_widget(form.password.children['second'], {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <button class="btn btn-primary mx-auto mt-3">{{ button_label|default('S\'inscrire') }}</button>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

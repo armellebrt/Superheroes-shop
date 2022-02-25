@@ -1,0 +1,100 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <div class="row">
+        {% block admin_sidebar %}{{ parent() }}{% endblock %}
+        <div class="col">
+            <h1 class="text-center">Partie admin</h1>
+
+            <button class="btn btn-primary">
+            <a class="" href="{{ app.request.headers.get('referer') }}">
+                Retour
+            </a>
+            </button>
+
+            <div class="row mt-5 mx-auto d-flex">
+                <div class="mx-auto admin_cards row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary">Utilisateurs</strong>
+                        <h3 class="mb-0">Utilisateurs</h3>
+                        <p class="text-muted">Nombre: {{ userNumber }}</p>
+                        <p class="card-text mb-auto">Nombre d'utilisateurs avec l'accès admin: {{ adminNumber }}</p>
+                        <a href="/admin/users" class="stretched-link">Voir plus</a>
+                    </div>
+                </div>
+
+                <div class=" mx-auto admin_cards row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary">Produits</strong>
+                        <h3 class="mb-0">Produits</h3>
+                        <p class="text-muted">Nombre: {{ numberProducts }}</p>
+                        <p class="card-text mb-auto">Total des stocks: {{ totalProducts }}</p>
+                        <a href="/admin/products" class="stretched-link">Voir plus</a>
+                    </div>
+                </div>
+
+            </div>
+            <canvas id="admin_graph_products" class="mx-auto rounded shadow-sm p-2 m-2"  data-products-stock="{{ listProductsStock }}"></canvas>
+        </div>
+
+    </div>
+
+
+    <script>
+        let listProducts = JSON.parse($("#admin_graph_products").attr("data-products-stock"));
+
+let productsName = [];
+        let productsStock = [];
+
+        $.each(listProducts,function(productName, productStock) {
+            productsName.push(productName);
+            productsStock.push(productStock);
+        });
+
+        console.log(productsName);
+        console.log(productsStock);
+
+        // $.each(listProductsName, function(index,jsonObject){
+        //     $.each(jsonObject, function(key,val){
+        //         console.log("key : "+key+" ; value : "+val);
+        //     });
+        // });
+
+        const ctx = document.getElementById('admin_graph_products').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: productsName,
+                datasets: [{
+                    label: 'stock restant',
+                    data: productsStock,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+{#    <div id="wallpaper_container">#}
+{#        <img id="wallpaper" src="{{ asset("images/watch2.jpg") }}" alt="image d'accueil"/>#}
+{#    </div>#}
+
+    {% block header %}{{ parent() }}{% endblock %}
+
+    <div id="products_card_container" class="d-flex flex-wrap mx-auto justify-content-between">
+        {% for product in products %}
+            <div id="img_product_container" class="card shadow-sm my-5">
+                <img class="img_product" src="{{ asset(product.image) }}"
+                     onerror="this.src='{{ asset("images/placeholder.png") }}'" alt="produit"/>
+                <div class="card-body">
+                    <p class="card-text">{{ product.name }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">{{ product.price }} €</small>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}
+
+

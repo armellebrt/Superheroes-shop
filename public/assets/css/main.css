@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+li {
+    list-style: none;
+}
+
+ul {
+    padding-left: 0;
+}
+
+a, a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+body {
+    background: #a3a6b6;
+}
+
+.alert-danger {
+    color: #821d26;
+    background-color: #c79196;
+    border-color: #821d26;
+}
+
+.btn {
+    border-radius: 2em;
+}
+
+.btn-primary, .btn-primary * {
+    border: #666b82;
+    color: white;
+    background: #2d2c36;
+
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    color: #C3C5D2;
+    background: #363944;
+    /*color: #2d2c36;*/
+    /*background: white;*/
+}
+
+.btn-primary:focus, .btn-primary:active{
+    box-shadow: 0 0 0 0.25rem rgb(28 39 56 / 50%);
+}
+
+.form_container {
+    box-shadow: 0 10px 10px #54565f;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    color: #2d2c36;
+    background: #C3C5D2;
+}
+
+form label {
+    margin-top: 0.25em;
+    font-weight: 400;
+}
+
+form input {
+    margin-bottom: 0.25em;
+    border-radius: 1em !important;
+}
+
+.form-control:focus {
+    /*color: rgb(102 107 130);*/
+    border-color: transparent;
+    box-shadow: 0 0 0 0.25rem rgb(102 107 130 / 30%);
+}
+
+form h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.3em;
+    margin: auto;
+    text-align: center;
+}
+
+.alert ul {
+    margin: 0;
+}

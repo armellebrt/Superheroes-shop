@@ -1,0 +1,16 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Edit Users{% endblock %}
+
+{% block body %}
+    <div class="row">
+        {% block admin_sidebar %}{{ parent() }}{% endblock %}
+        <div class="col">
+            <h1>Modifier l'utilisateur</h1>
+
+            <a href="/admin/users">Retour à la liste d'utilisateurs'</a>
+            {{ include('admin/users/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+            {{ include('admin/users/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
