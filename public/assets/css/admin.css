@@ -35,3 +35,12 @@
     font-size: 25px;
 }
 
+.admin-edit-container {
+    box-shadow: 0 10px 10px #54565f;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    color: #2d2c36;
+    background: #C3C5D2;
+}
+

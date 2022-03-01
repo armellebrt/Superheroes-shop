@@ -8,11 +8,10 @@
         <div class="col">
             <h1 class="text-center">Partie admin</h1>
 
-            <button class="btn btn-primary">
+
             <a class="" href="{{ app.request.headers.get('referer') }}">
-                Retour
+                <button class="btn btn-primary">Retour</button>
             </a>
-            </button>
 
             <div class="row mt-5 mx-auto d-flex">
                 <div class="mx-auto admin_cards row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -45,7 +44,7 @@
     <script>
         let listProducts = JSON.parse($("#admin_graph_products").attr("data-products-stock"));
 
-let productsName = [];
+        let productsName = [];
         let productsStock = [];
 
         $.each(listProducts,function(productName, productStock) {

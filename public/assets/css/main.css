@@ -73,7 +73,7 @@ form input {
     box-shadow: 0 0 0 0.25rem rgb(102 107 130 / 30%);
 }
 
-form h1 {
+h1 {
     font-family: 'Anton', sans-serif;
     font-size: 2.3em;
     margin: auto;
@@ -83,3 +83,4 @@ form h1 {
 .alert ul {
     margin: 0;
 }
+

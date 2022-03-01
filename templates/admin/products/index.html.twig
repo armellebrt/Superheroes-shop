@@ -6,9 +6,11 @@
     <div class="row">
         {% block admin_sidebar %}{{ parent() }}{% endblock %}
         <div class="col">
-            <h1>Produits</h1>
+            <h1 class="text-center">Produits</h1>
 
-            <table class="table">
+            <a href="{{ path('products_new') }}"><button class="btn btn-primary mb-3">Créer un produit</button></a>
+
+            <table class="table bg-light rounded">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -17,7 +19,6 @@
                     <th>Price</th>
                     <th>Image</th>
                     <th>Stock</th>
-                    <th>actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,7 +33,6 @@
                         <td>
                             <div class="row">
                                 <a class="col" href="{{ path('products_edit', {'id': product.id}) }}"><button class="btn btn-success">Modifier</button></a>
-                                <a class="col" href="{{ path('products_show', {'id': product.id}) }}"><button class="btn btn-primary">Infos</button></a>
                                 {{ include('admin/products/_delete_form.html.twig') }}
                             </div>
                         </td>
@@ -44,8 +44,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-
-            <a href="{{ path('products_new') }}">Créer un produit</a>
 
         </div>
     </div>

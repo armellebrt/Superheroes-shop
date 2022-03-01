@@ -1,16 +1,18 @@
 {% extends 'admin/base_admin.html.twig' %}
 
-{% block title %}Edit Users{% endblock %}
+{% block title %}Modifier un utilisateur{% endblock %}
 
 {% block body %}
     <div class="row">
         {% block admin_sidebar %}{{ parent() }}{% endblock %}
-        <div class="col">
-            <h1>Modifier l'utilisateur</h1>
-
-            <a href="/admin/users">Retour à la liste d'utilisateurs'</a>
-            {{ include('admin/users/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+        <div class="col text-center">
+            <a href="{{ path('users_index') }}" class="justify-self-start"><button class="btn btn-primary mt-2">Retour à la liste</button></a>
+                <h1>Modifier l'utilisateur</h1>
+            <div class="bg-light admin-edit-container text-center col-lg-4 col-md-6 col-sm-10 mx-auto mt-3 d-flex flex-column align-items-center">
+                {{ include('admin/users/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+            </div>
             {{ include('admin/users/_delete_form.html.twig') }}
         </div>
+
     </div>
 {% endblock %}

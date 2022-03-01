@@ -28,7 +28,7 @@
                     <header class="d-flex flex-column">
                         {% if path(app.request.attributes.get('_route'),
                             app.request.attributes.get('_route_params')) != '/' %}
-                            <a href="/"><h1>Site e-commerce</h1></a>
+                            <a href="/"><h1>Superheroes shop</h1></a>
                         {% endif %}
                         <ul class="d-flex justify-content-end align-items-end mb-0 pt-2 pb-1">
                             {% if is_granted('ROLE_ADMIN') %}
@@ -44,7 +44,7 @@
                         {% if path(app.request.attributes.get('_route'),
                             app.request.attributes.get('_route_params')) == '/' %}
                             {#                        {% if template == 'index' %}#}
-                            <h1 class="mb-5">Site e-commerce</h1>
+                            <h1 class="mb-5">Superheroes shop</h1>
                         {% endif %}
                     </header>
             {% endblock %}

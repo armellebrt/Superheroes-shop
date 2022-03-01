@@ -1,4 +1,18 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    {% set _block = block('error_message') %}
+
+    {% if _block is not empty %}
+        <div class="alert alert-danger text-center mt-3">
+            {% block error_message %}{{ form_errors(form) }}{% endblock %}
+        </div>
+    {% endif %}
+
+    {{ form_row(form.sku, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.price, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.image, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.stock, {'attr': {'class': 'form-control'}}) }}
+
+{#    {{ form_widget(form) }}#}
+    <button class="btn btn-primary my-2">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
