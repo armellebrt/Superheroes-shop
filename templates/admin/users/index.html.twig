@@ -16,16 +16,23 @@
                     <th>Id</th>
                     <th>Pseudo</th>
                     <th>Email</th>
-                    <th>Roles</th>
+                    <th>Rôle</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for user in users %}
-                    <tr>
+                    {% set roleUser = user.roles %}
+                    <tr  {% if 'ROLE_ADMIN' in roleUser %} class="dashboard_column_admin_role" {% endif %} >
                         <td>{{ user.id }}</td>
                         <td>{{ user.pseudo }}</td>
                         <td>{{ user.email }}</td>
-                        <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                        <td>
+                            {% if 'ROLE_ADMIN' in roleUser %}
+                                admin
+                            {% else %}
+                                utilisateur
+                            {% endif %}
+                        </td>
                         <td>
                             <div class="row">
                                 <a class="col" href="{{ path('users_edit', {'id': user.id}) }}"><button class="btn btn-success">Modifier</button></a>

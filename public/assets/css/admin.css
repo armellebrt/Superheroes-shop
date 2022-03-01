@@ -1,13 +1,8 @@
 #sidebar {
-    height: 100vh;
     background: #2d2c36;
-    /*background: #a3a6b6;*/
-    /*border-right: Solid 1px #2d2c36;*/
+    min-height: 100vh;
 }
 
-/*body {*/
-/*    background: white;*/
-/*}*/
 #sidebar * {
     color: white;
 }
@@ -42,5 +37,15 @@
     border-radius: 1em;
     color: #2d2c36;
     background: #C3C5D2;
+}
+
+.dashboard_column_admin_role {
+    background: #d2a158;
+    color: white;
+}
+
+.dashboard_column_out_of_stock {
+    background: #d25858;
+    color: white;
 }
 

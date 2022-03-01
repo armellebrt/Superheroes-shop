@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Products
  *
  * @ORM\Table(name="products", uniqueConstraints={@ORM\UniqueConstraint(name="sku", columns={"sku"})}, indexes={@ORM\Index(name="category", columns={"category"})})
  * @ORM\Entity(repositoryClass="App\Repository\ProductsRepository")
+ * @UniqueEntity("sku")
  */
 class Products
 {
@@ -24,7 +27,7 @@ class Products
     /**
      * @var string
      *
-     * @ORM\Column(name="sku", type="string", length=32, nullable=false)
+     * @ORM\Column(name="sku", type="string", length=32, nullable=false, unique=true)
      */
     private $sku;
 
@@ -39,6 +42,7 @@ class Products
      * @var int
      *
      * @ORM\Column(name="price", type="integer", nullable=false)
+     *  @Assert\Positive
      */
     private $price;
 
@@ -53,6 +57,7 @@ class Products
      * @var int
      *
      * @ORM\Column(name="stock", type="integer", nullable=false)
+     * @Assert\Positive
      */
     private $stock;
 

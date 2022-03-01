@@ -23,13 +23,20 @@
                 </thead>
                 <tbody>
                 {% for product in products %}
-                    <tr>
+                    {% set stock = product.stock %}
+                    <tr  {% if stock == 0 %} class="dashboard_column_out_of_stock" {% endif %} >
                         <td>{{ product.id }}</td>
                         <td>{{ product.sku }}</td>
                         <td>{{ product.name }}</td>
                         <td>{{ product.price }} €</td>
                         <td>{{ product.image }}</td>
-                        <td>{{ product.stock }}</td>
+                        <td>{% if stock == 0 %}
+                                Rupture de stock
+                            {% else %}
+                                {{ stock }}
+                            {% endif %}
+
+                        </td>
                         <td>
                             <div class="row">
                                 <a class="col" href="{{ path('products_edit', {'id': product.id}) }}"><button class="btn btn-success">Modifier</button></a>

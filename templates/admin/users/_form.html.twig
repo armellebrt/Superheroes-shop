@@ -13,6 +13,8 @@
     {{ form_widget(form.password.children['first'], {'attr': {'class': 'form-control'}}) }}
     {{ form_label(form.password.children['second']) }}
     {{ form_widget(form.password.children['second'], {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.roles, {'attr': {'class': ''}}) }}
+
 
     <button class="btn btn-primary mt-2">{{ button_label|default('Créer') }}</button>
 {{ form_end(form) }}
