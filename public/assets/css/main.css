@@ -66,7 +66,6 @@ form input {
 }
 
 .form-control:focus {
-    /*color: rgb(102 107 130);*/
     border-color: transparent;
     box-shadow: 0 0 0 0.25rem rgb(102 107 130 / 30%);
 }
@@ -82,3 +81,10 @@ h1 {
     margin: 0;
 }
 
+.header_nav_link {
+    width: 250px;
+    height: min-content;
+    right: 0;
+    top: 1.5em;
+    position: absolute;
+}

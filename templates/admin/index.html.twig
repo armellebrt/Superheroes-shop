@@ -18,19 +18,24 @@
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-primary">Utilisateurs</strong>
                         <h3 class="mb-0">Utilisateurs</h3>
-                        <p class="text-muted">Nombre: {{ userNumber }}</p>
-                        <p class="card-text mb-auto">Nombre d'utilisateurs avec l'accès admin: {{ adminNumber }}</p>
-                        <a href="/admin/users" class="stretched-link">Voir plus</a>
+                        <p class="text-muted">Nombre: {{ userNumber }}<br>
+                            Nombre d'utilisateurs avec l'accès admin: {{ adminNumber }}
+                        </p>
+                        <a href="/admin/users" class="stretched-link"></a>
                     </div>
                 </div>
 
-                <div class=" mx-auto admin_cards row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
+                <div class="mx-auto admin_cards row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 pb-2 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-primary">Produits</strong>
                         <h3 class="mb-0">Produits</h3>
-                        <p class="text-muted">Nombre: {{ numberProducts }}</p>
-                        <p class="card-text mb-auto">Total des stocks: {{ totalProducts }}</p>
-                        <a href="/admin/products" class="stretched-link">Voir plus</a>
+                        <p class="text-muted">Nombre: {{ numberProducts }}<br>
+                            Total des stocks: {{ totalProducts }} produit(s)<br>
+                            Produits en rupture de stock: {{ outOfStock }}<br>
+                            Valeur totale des stocks: {{ valueStock }} €
+                        </p>
+                        <p class="card-text"></p>
+                        <a href="/admin/products" class="stretched-link"></a>
                     </div>
                 </div>
 

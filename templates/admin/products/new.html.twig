@@ -6,8 +6,10 @@
     <div class="row">
         {% block admin_sidebar %}{{ parent() }}{% endblock %}
         <div class="col text-center">
-            <a href="{{ path('products_index') }}" class="justify-self-start"><button class="btn btn-primary mt-2">Retour à la liste</button></a>
-                <h1>Créer un nouveau produit</h1>
+            <a href="{{ path('products_index') }}" class="d-flex justify-self-start">
+                <button class="btn btn-primary mt-2">Retour à la liste</button>
+            </a>
+            <h1>Créer un nouveau produit</h1>
             <div class="bg-light admin-edit-container text-center col-lg-4 col-md-6 col-sm-10 mx-auto mt-3 d-flex flex-column align-items-center">
                 {{ include('admin/products/_form.html.twig') }}
             </div>

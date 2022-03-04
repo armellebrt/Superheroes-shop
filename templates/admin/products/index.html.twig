@@ -39,8 +39,10 @@
                         </td>
                         <td>
                             <div class="row">
-                                <a class="col" href="{{ path('products_edit', {'id': product.id}) }}"><button class="btn btn-success">Modifier</button></a>
+                                <a class="col-6" href="{{ path('products_edit', {'id': product.id}) }}"><button class="btn btn-success">Modifier</button></a>
+                                <div class="col-6">
                                 {{ include('admin/products/_delete_form.html.twig') }}
+                                </div>
                             </div>
                         </td>
                     </tr>

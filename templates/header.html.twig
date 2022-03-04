@@ -1,23 +1,34 @@
-<header class="d-flex flex-column">
-    {% if path(app.request.attributes.get('_route'),
-        app.request.attributes.get('_route_params')) != '/' %}
-        <a href="/"><h1>Superheroes shop</h1></a>
-    {% endif %}
-
-    <ul class="d-flex justify-content-end align-items-end mb-0 pt-2 pb-1">
-        {% if is_granted('ROLE_ADMIN') %}
-            <li><a href="/admin">Administration</a></li>
-        {% endif %}
-        {% if is_granted('ROLE_USER') %}
-            <li><a href="/logout">Se déconnecter</a></li>
-        {% else %}
-            <li><a href="/register">Inscription</a></li>
-            <li><a href="/login">Se connecter </a></li>
-        {% endif %}
-    </ul>
+<header class="d-flex flex-row align-items-center justify-content-center pb-3">
     {% if path(app.request.attributes.get('_route'),
         app.request.attributes.get('_route_params')) == '/' %}
-        <a href="/"><h1 class="mb-5">Superheroes shop</h1></a>
-        {{ form(form, {'attr': {'class': 'd-flex justify-content-center mb-3'}}) }}
+        {{ form(form, {'attr': {'class': 'd-flex justify-content-center col-3'}}) }}
     {% endif %}
+
+        <a
+            {% if path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == '/' %}
+                class="col-6"
+                {% else %}
+                class="col-12"
+            {% endif %}
+        href="/"><h1 class="">Superheroes shop</h1></a>
+
+     <ul class=" d-flex mb-0 pb-1
+      {% if path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == '/' %}
+                      col-3 justify-content-end align-items-end pt-1
+                      {% else %}
+                      header_nav_link
+                  {% endif %}
+                  ">
+            {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="/admin">Administration</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+                <li><a href="/logout">Se déconnecter</a></li>
+            {% else %}
+                <li><a href="/register">Inscription</a></li>
+                <li><a href="/login">Se connecter </a></li>
+            {% endif %}
+        </ul>
+
+
 </header>

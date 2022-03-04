@@ -21,10 +21,14 @@ class AdminController extends AbstractController
 
         $listProductsStock = [];
         $totalStock = 0;
+        $valueStock = 0;
+        $outOfStock = 0;
         foreach($products as $product) {
             $stock = $product->getStock();
             $listProductsStock[$product->getName()] = $stock;
             $totalStock += $stock;
+            $valueStock += $stock * $product->getPrice();
+            if($stock === 0) $outOfStock ++;
         }
 
         $numberProducts = count($listProductsStock);
@@ -34,7 +38,9 @@ class AdminController extends AbstractController
             'totalProducts' => $totalStock,
             'listProductsStock' => json_encode($listProductsStock, JSON_FORCE_OBJECT),
             'userNumber' => $usersNumber,
-            'adminNumber' => $adminNumber
+            'adminNumber' => $adminNumber,
+            'valueStock' => $valueStock,
+            'outOfStock' => $outOfStock
         ]);
     }
 }
