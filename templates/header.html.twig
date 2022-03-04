@@ -1,23 +1,14 @@
-<header class="d-flex flex-row align-items-center justify-content-center pb-3">
+<header class="d-flex flex-row align-items-center justify-content-center">
     {% if path(app.request.attributes.get('_route'),
         app.request.attributes.get('_route_params')) == '/' %}
         {{ form(form, {'attr': {'class': 'd-flex justify-content-center col-3'}}) }}
+        {% else %}
+        <div class="col-3"></div>
     {% endif %}
 
-        <a
-            {% if path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == '/' %}
-                class="col-6"
-                {% else %}
-                class="col-12"
-            {% endif %}
-        href="/"><h1 class="">Superheroes shop</h1></a>
+        <a    class="col-6" href="/"><h1 class="">Superheroes shop</h1></a>
 
-     <ul class=" d-flex mb-0 pb-1
-      {% if path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) == '/' %}
-                      col-3 justify-content-end align-items-end pt-1
-                      {% else %}
-                      header_nav_link
-                  {% endif %}
+     <ul class=" d-flex mb-0 pb-1 col-3 justify-content-end align-items-end pt-1
                   ">
             {% if is_granted('ROLE_ADMIN') %}
                 <li><a href="/admin">Administration</a></li>
