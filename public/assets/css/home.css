@@ -1,6 +1,10 @@
 
-#img_product_container {
+.img_product_container {
     width: 250px;
+}
+
+#single-product-card{
+    width: 444px;
 }
 
 #home_informations {
@@ -25,4 +29,64 @@
 
 #products_card_container {
     padding-inline: 5em;
+}
+
+.ui-menu-item * {
+    background: white;
+}
+
+#ui-id-1 {
+    width: 170px;
+}
+
+#form_searchedTerm {
+    padding-left: 0.8rem;
+    width: 200px;
+    border-radius: 0.3em !important;
+    min-width: 0;
+    border: none;
+    border-top-right-radius: 0!important;
+    border-bottom-right-radius: 0!important;
+}
+
+#form_searchedTerm::placeholder {
+    color: #666b82;
+}
+
+#form_searchedTerm:focus-visible {
+    outline: thin dotted;
+}
+
+#form_save {
+    color: #2d2c36;
+    font-size: 20px;
+    background: #fff;
+    padding: 7px;
+    transition: 0.5s;
+    border: none;
+    border-radius: 5px;
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+}
+
+#form * {
+    height: 100%;
+}
+
+.card-body i {
+    font-size: 2em;
+    color: #2d2c36;
+}
+
+/* I put the products out-of-order in last position */
+.wrapped_element_first {
+    order: -1;
+}
+
+.out_of_order_product_view {
+    color: #af0000;
+}
+
+.out_of_order_product_view i {
+    font-size: 2em;
 }

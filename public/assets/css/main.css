@@ -40,8 +40,6 @@ body {
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     color: #C3C5D2;
     background: #363944;
-    /*color: #2d2c36;*/
-    /*background: white;*/
 }
 
 .btn-primary:focus, .btn-primary:active{

@@ -11,10 +11,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('admin/products')]
+//#[Route('admin/products')]
 class ProductsController extends AbstractController
 {
-    #[Route('/', name: 'products_index', methods: ['GET'])]
+    #[Route('products/show/{id}', name: 'products_show', methods: ['GET'])]
+    public function showOneProduct(ProductsRepository $productsRepository, $id): Response
+    {
+        return $this->render('home/product_show.html.twig', [
+            'product' => $productsRepository->findOneBy(["id" => $id]),
+        ]);
+    }
+
+    #[Route('admin/products', name: 'products_index', methods: ['GET'])]
     public function index(ProductsRepository $productsRepository): Response
     {
         return $this->render('admin/products/index.html.twig', [
@@ -22,7 +30,7 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'products_new', methods: ['GET', 'POST'])]
+    #[Route('admin/products/new', name: 'products_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $product = new Products();
@@ -42,15 +50,7 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'products_show', methods: ['GET'])]
-    public function show(Products $product): Response
-    {
-        return $this->render('admin/products/show.html.twig', [
-            'product' => $product,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'products_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/products/{id}/edit', name: 'products_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Products $product, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ProductsType::class, $product);
@@ -68,7 +68,7 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'products_delete', methods: ['POST'])]
+    #[Route('admin/products/{id}', name: 'products_delete', methods: ['POST'])]
     public function delete(Request $request, Products $product, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {

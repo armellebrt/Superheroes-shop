@@ -1,0 +1,23 @@
+<header class="d-flex flex-column">
+    {% if path(app.request.attributes.get('_route'),
+        app.request.attributes.get('_route_params')) != '/' %}
+        <a href="/"><h1>Superheroes shop</h1></a>
+    {% endif %}
+
+    <ul class="d-flex justify-content-end align-items-end mb-0 pt-2 pb-1">
+        {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="/admin">Administration</a></li>
+        {% endif %}
+        {% if is_granted('ROLE_USER') %}
+            <li><a href="/logout">Se déconnecter</a></li>
+        {% else %}
+            <li><a href="/register">Inscription</a></li>
+            <li><a href="/login">Se connecter </a></li>
+        {% endif %}
+    </ul>
+    {% if path(app.request.attributes.get('_route'),
+        app.request.attributes.get('_route_params')) == '/' %}
+        <a href="/"><h1 class="mb-5">Superheroes shop</h1></a>
+        {{ form(form, {'attr': {'class': 'd-flex justify-content-center mb-3'}}) }}
+    {% endif %}
+</header>

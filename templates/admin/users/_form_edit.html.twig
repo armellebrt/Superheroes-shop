@@ -3,16 +3,12 @@
 
     {% if _block is not empty %}
         <div class="alert alert-danger text-cente mt-3">
-            {% block error_message %}{{ form_errors(form) }}{{ form_errors(form.password.children['first']) }}{{ form_errors(form.password.children['second']) }}{% endblock %}
+            {% block error_message %}{{ form_errors(form) }}{% endblock %}
         </div>
     {% endif %}
 
     {{ form_row(form.pseudo, {'attr': {'class': 'form-control'}}) }}
     {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
-    {{ form_label(form.password.children['first']) }}
-    {{ form_widget(form.password.children['first'], {'attr': {'class': 'form-control'}}) }}
-    {{ form_label(form.password.children['second']) }}
-    {{ form_widget(form.password.children['second'], {'attr': {'class': 'form-control'}}) }}
     {{ form_row(form.roles) }}
 
 

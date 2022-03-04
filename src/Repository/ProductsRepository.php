@@ -19,6 +19,16 @@ class ProductsRepository extends ServiceEntityRepository
         parent::__construct($registry, Products::class);
     }
 
+    // function that serves during search of product
+    public function searchByName(string $name): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.name LIKE :name')
+            ->setParameter('name', "$name%")
+            ->getQuery()
+            ->getResult();
+    }
+
 
     // /**
     //  * @return Products[] Returns an array of Products objects

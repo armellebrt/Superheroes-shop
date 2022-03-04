@@ -19,36 +19,37 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+            <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
     <body>
         {% block body %}
             {% block header %}
-                    <header class="d-flex flex-column">
-                        {% if path(app.request.attributes.get('_route'),
-                            app.request.attributes.get('_route_params')) != '/' %}
-                            <a href="/"><h1>Superheroes shop</h1></a>
-                        {% endif %}
-                        <ul class="d-flex justify-content-end align-items-end mb-0 pt-2 pb-1">
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li><a href="/admin">Administration</a></li>
-                            {% endif %}
-                            {% if is_granted('ROLE_USER') %}
-                                <li><a href="/logout">Se déconnecter</a></li>
-                            {% else %}
-                                <li><a href="/register">Inscription</a></li>
-                                <li><a href="/login">Se connecter </a></li>
-                            {% endif %}
-                        </ul>
-                        {% if path(app.request.attributes.get('_route'),
-                            app.request.attributes.get('_route_params')) == '/' %}
-                            {#                        {% if template == 'index' %}#}
-                            <h1 class="mb-5">Superheroes shop</h1>
-                        {% endif %}
-                    </header>
+                {{ include('header.html.twig') }}
             {% endblock %}
         {% endblock %}
+
+        {% if path(app.request.attributes.get('_route'),
+            app.request.attributes.get('_route_params')) == '/' %}
+    <script>
+        $( function() {
+            $("#form_searchedTerm").autocomplete({
+                source: function( request, response ) {
+                    console.log(request);
+                    let chaine = request.term;
+                    let matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(chaine.trim()), "i");
+
+                    response(
+                        $.grep(JSON.parse('{{ autocompleteHeader | json_encode | raw }}'), function (item) {
+                            return matcher.test(item);
+                        })
+                    );
+                },
+            });
+        } );
+    </script>
+
+        {% endif %}
 
     </body>
 </html>

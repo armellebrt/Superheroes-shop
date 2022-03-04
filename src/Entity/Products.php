@@ -57,7 +57,7 @@ class Products
      * @var int
      *
      * @ORM\Column(name="stock", type="integer", nullable=false)
-     * @Assert\Positive
+     * @Assert\PositiveOrZero
      */
     private $stock;
 

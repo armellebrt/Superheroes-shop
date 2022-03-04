@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Users;
+use App\Form\UsersEditType;
 use App\Form\UsersType;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -64,7 +65,7 @@ class UsersController extends AbstractController
     public function edit(Request $request, Users $user, EntityManagerInterface $entityManager): Response
     {
         $user->setPassword("");
-        $form = $this->createForm(UsersType::class, $user);
+        $form = $this->createForm(UsersEditType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
