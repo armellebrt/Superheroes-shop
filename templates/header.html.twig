@@ -6,18 +6,18 @@
         <div class="col-3"></div>
     {% endif %}
 
-        <a    class="col-6" href="/"><h1 class="">Superheroes shop</h1></a>
+        <a    class="col-6" href="{{ path('home') }}"><h1 class="">Superheroes shop</h1></a>
 
      <ul class=" d-flex mb-0 pb-1 col-3 justify-content-end align-items-end pt-1
                   ">
             {% if is_granted('ROLE_ADMIN') %}
-                <li><a href="/admin">Administration</a></li>
+                <li><a href="{{ path('admin') }}">Administration</a></li>
             {% endif %}
             {% if is_granted('ROLE_USER') %}
-                <li><a href="/logout">Se déconnecter</a></li>
+                <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
             {% else %}
-                <li><a href="/register">Inscription</a></li>
-                <li><a href="/login">Se connecter </a></li>
+                <li><a href="{{ path('register') }}">Inscription</a></li>
+                <li><a href="{{ path('app_login') }}">Se connecter </a></li>
             {% endif %}
         </ul>
 
