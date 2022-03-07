@@ -1,14 +1,18 @@
-<header class="d-flex flex-row align-items-center justify-content-center">
+<header class="d-flex flex-lg-row flex-column align-items-center justify-content-center">
+        <a class="col-lg-7 col-12 d-flex text-center" href="{{ path('home') }}">
+            <h1 class="ms-lg-4">Superheroes shop</h1>
+        </a>
+        </div>
+
     {% if path(app.request.attributes.get('_route'),
         app.request.attributes.get('_route_params')) == '/' %}
-        {{ form(form, {'attr': {'class': 'd-flex justify-content-center col-3'}}) }}
+        {{ form(form, {'attr': {'class': 'd-flex justify-content-center col-lg-2 col-12 my-2'}}) }}
         {% else %}
-        <div class="col-3"></div>
+        <div class="col-lg-2 col-12"></div>
     {% endif %}
 
-        <a    class="col-6" href="{{ path('home') }}"><h1 class="">Superheroes shop</h1></a>
 
-     <ul class=" d-flex mb-0 pb-1 col-3 justify-content-end align-items-end pt-1
+     <ul class="d-flex mb-lg-0 pb-1 col-lg-3 col-12 justify-content-lg-end justify-content-center align-items-end pt-1
                   ">
             {% if is_granted('ROLE_ADMIN') %}
                 <li><a href="{{ path('admin') }}">Administration</a></li>
@@ -20,6 +24,4 @@
                 <li><a href="{{ path('app_login') }}">Se connecter </a></li>
             {% endif %}
         </ul>
-
-
 </header>
