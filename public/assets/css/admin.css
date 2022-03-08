@@ -92,9 +92,9 @@
         min-height: inherit;
     }
 
-    #sidebar > div > a:last-child {
-        background: #a3a6b6;
-    }
+    /*#sidebar > div > a:last-child {*/
+    /*    background: #a3a6b6;*/
+    /*}*/
 
     #admin_graph_products {
         width: 90vw !important;

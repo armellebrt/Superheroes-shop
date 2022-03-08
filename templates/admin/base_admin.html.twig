@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}"/>
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/admin_navbar.js') }}"></script>
+{% endblock %}
+
 {% block body %}
-
     {% block admin_sidebar %}
-
-        <nav id="sidebar" class="col-lg-2 col-12 d-md-block sidebar">
+        <nav id="sidebar" class="col-lg-2 col-xl-2 col-12 d-block mb-3 mb-lg-0 mb-xl-0 sidebar">
             <!-- Top Navigation Menu -->
-        <div class="d-lg-none d-xl-none d-block">
+        <div class="d-flex flex-column d-lg-none d-xl-none d-block">
+            <a href="{{ path('home') }}" class="mx-auto d-flex align-items-center"><i id="backhome-icon" class="bi bi-arrow-bar-left"></i> Retour à l'accueil</a>
             <div id="responsive_admin_navbar" class="topnav">
                 <a class="nav-link active" href="{{ path('admin') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -35,11 +39,10 @@
                         </a>
                     </li>
                 </div>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <a href="javascript:void(0);" class="icon" onclick="changeNavbarVisibility()">
                     <i class="fa fa-bars"></i>
                 </a>
             </div>
-            <a href="{{ path('home') }}" class="d-flex align-items-center"><i id="backhome-icon" class="bi bi-arrow-bar-left"></i> Retour à l'accueil</a>
         </div>
 
             <div class="sidebar-sticky d-lg-block d-xl-block d-none">
@@ -70,6 +73,5 @@
             </div>
         </nav>
     {% endblock %}
-
 
 {% endblock %}
