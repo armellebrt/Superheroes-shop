@@ -90,3 +90,17 @@
 .out_of_order_product_view i {
     font-size: 2em;
 }
+
+#form_quantity {
+    width: auto;
+}
+
+.form-select:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+/*css for product view*/
+#product_name {
+    font-family: 'Anton', sans-serif;
+}

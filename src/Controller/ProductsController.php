@@ -7,6 +7,9 @@ use App\Form\ProductsType;
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,8 +20,36 @@ class ProductsController extends AbstractController
     #[Route('products/show/{id}', name: 'products_show', methods: ['GET'])]
     public function showOneProduct(ProductsRepository $productsRepository, $id): Response
     {
+        $form = $this->createFormBuilder()
+            ->add('quantity', ChoiceType::class, [
+                'choices'  => [
+                    'Qté' => [
+                        1 => 1,
+                        2 => 2,
+                        3 => 3,
+                        4 => 4,
+                        5 => 5
+                    ]
+                ],
+                    'label' => false
+                    ]
+            )
+            ->add('product_id', HiddenType::class, [
+                'attr' => [
+                    'value' => $id
+                ]
+            ])
+            ->add('addToCart', SubmitType::class, [
+                'label' => 'Ajouter au panier',
+                'attr' => [
+                    'class' => 'btn btn-success'
+                ]
+            ])
+            ->getForm();
+
         return $this->render('home/product_show.html.twig', [
             'product' => $productsRepository->findOneBy(["id" => $id]),
+            'form' => $form->createView()
         ]);
     }
 

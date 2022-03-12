@@ -1,0 +1,37 @@
+<div id="cart-popin" class="d-flex flex-column py-3">
+    {% if not cart %}
+        {% set cart = app.session.get('cart') %}
+        <div>not cart</div>
+    {% endif %}
+    {% set products = cart['items'] ?? '' %}
+    {% set totalCart = cart['total_cart']  ?? ''%}
+
+    <h3 class="mb-3">Votre panier</h3>
+
+    {% if (products) %}
+        <div class="d-flex flex-wrap mt-1 mb-3">
+            {% for product in products %}
+                <div class="d-flex flex-row col-12 align-items-start m-3 ms-4">
+                    <img class="product_cart_popin_img" src="{{ asset(product.image) }}"
+                         onerror="this.src='{{ asset("images/placeholder.png") }}'" alt="{{ product.name }}"/>
+                    <div class="text-start ms-3">
+                        <div><strong>{{ product.name }}</strong></div>
+                        <div><strong>{{ product.totalPrice }} €</strong></div>
+                        <div class="text-muted"><span>Quantité: </span>{{ product.qty }}</div>
+                        <div class="text-muted"><span>Prix: </span>{{ product.price }} €</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if (totalCart)  %}
+        <div id="product_cart_popin_bottom" class="d-flex justify-content-between align-items-center mx-4 pt-3">
+            <span class="h5">Total</span>
+            <span class="mb-3 h5">{{ totalCart }} €</span>
+        </div>
+        <a href="{{ path('cart') }}"><button class="btn btn-primary">Voir le panier</button></a>
+    {% else %}
+        Votre panier est vide !
+        <a href="{{ path('home') }}"><button class="btn btn-primary my-3">Ajouter un produit</button></a>
+    {% endif %}
+</div>
