@@ -21,13 +21,17 @@
             {% else %}
                 <li><a href="{{ path('register') }}">Inscription</a></li>
                 <li><a href="{{ path('app_login') }}">Se connecter </a></li>
-                <li><a href="{{ path('cart') }}"><i class="bi bi-cart-fill fs-3"></i></a></li>
+                <li>
+                    <div id="minicart">
+                        <a id="cart-navbar-icon" href="{{ path('cart') }}"><i class="bi bi-cart-fill fs-3"></i></a>
+                        {{ render(controller('App\\Controller\\CartController::getMinicart')) }}
+                    </div>
+                </li>
             {% endif %}
         </ul>
 </header>
 
 {# cart popin which appaears when adding a product #}
-{{ render(controller('App\\Controller\\CartController::getMinicart')) }}
 
 
 

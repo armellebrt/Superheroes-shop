@@ -12,15 +12,22 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class CartController extends AbstractController
 {
+//    private $session;
+//
+//    public function __construct(SessionInterface $session)
+//    {
+//        $this->session = $session;
+//    }
+
     /**
      * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
      */
     #[Route('/cart/add/{productId}/{quantity}', name: 'addToCart')]
     public function addToCart(
-        SessionInterface $session,
         ProductsRepository $productRepo,
         SerializerInterface $serializer,
         EntityManagerInterface $entityManager,
+        SessionInterface $session,
         $productId,
         $quantity
     ): Response {
@@ -65,11 +72,11 @@ class CartController extends AbstractController
         //add product to the cart
         $session->set('cart', $cart);
 
-        return $this->getMinicart($cart);
+        return $this->getMinicart($session, $cart);
     }
 
     #[Route('/cart', name: 'cart')]
-    public function showCart(SessionInterface $session, ProductsRepository $productRepo): Response
+    public function showCart(ProductsRepository $productRepo, SessionInterface $session): Response
     {
         // return products list in $_SESSION['cart'] or []
         return $this->render('cart/index.html.twig',
@@ -78,9 +85,9 @@ class CartController extends AbstractController
 
     }
 
-    public function getMinicart($cart = null, SessionInterface $session): Response
+    public function getMinicart(SessionInterface $session, $cart = null): Response
     {
-        if (!$cart)  $cart = $session->get('cart');
+        if(!$cart) $cart = $session->get('cart');
         return $this->renderForm('cart/minicart.html.twig',
         ['cart' => $cart]);
     }
