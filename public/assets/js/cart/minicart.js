@@ -1,4 +1,4 @@
-// create an object stock in window to manage the display of cart
+// create an object 'minicart' stocked in window to manage the display of minicart
 window.minicart = {
     initialize: function() {
         // $('#cart-navbar-icon').mouseenter('show()').mouseleave('hidden()');

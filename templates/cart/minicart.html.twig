@@ -1,4 +1,4 @@
-<div id="cart-popin" class="d-none d-flex flex-column py-3">
+<div id="cart-popin" class="animate__animated animate__fadeIn  d-none d-flex flex-column py-3">
     {% if not cart %}
         {% set cart = app.session.get('cart') %}
         <div>not cart</div>
@@ -11,7 +11,7 @@
     {% if (products) %}
         <div class="d-flex flex-wrap mt-1 mb-3">
             {% for product in products %}
-                <div class="d-flex flex-row col-12 align-items-start m-3 ms-4">
+                <div class="d-flex flex-row col-11 align-items-start m-3 ms-4">
                     <img class="product_cart_popin_img" src="{{ asset(product.image) }}"
                          onerror="this.src='{{ asset("images/placeholder.png") }}'" alt="{{ product.name }}"/>
                     <div class="text-start ms-3">

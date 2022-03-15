@@ -11,19 +11,19 @@
         <div class="col-lg-2 col-12"></div>
     {% endif %}
 
-     <ul class="d-flex align-items-center mb-lg-0 pb-1 col-lg-3 col-12 justify-content-lg-end justify-content-center
-     align-items-end pt-1">
+     <ul class="d-flex align-items-center mb-0 col-lg-3 col-12 justify-content-lg-end justify-content-center
+     pt-1">
             {% if is_granted('ROLE_ADMIN') %}
                 <li><a href="{{ path('admin') }}">Administration</a></li>
             {% endif %}
             {% if is_granted('ROLE_USER') %}
                 <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
             {% else %}
-                <li><a href="{{ path('register') }}">Inscription</a></li>
+                <li class="d-flex justify-content-center align-items-center"><a href="{{ path('register') }}">Inscription</a></li>
                 <li><a href="{{ path('app_login') }}">Se connecter </a></li>
                 <li>
                     <div id="minicart">
-                        <a id="cart-navbar-icon" href="{{ path('cart') }}"><i class="bi bi-cart-fill fs-3"></i></a>
+                        <a id="cart-navbar-icon" href="{{ path('cart') }}" class="me-lg-4 me-xl-4 ms-2 pb-lg-3 pb-xl-3"><i class="bi bi-cart-fill fs-3"></i></a>
                         {{ render(controller('App\\Controller\\CartController::getMinicart')) }}
                     </div>
                 </li>

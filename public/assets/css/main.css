@@ -88,26 +88,3 @@ h1 {
     top: 1.5em;
     position: absolute;
 }
-
-/*cart poppin*/
-#cart-popin {
-    background: white;
-    width: 350px;
-    position: absolute;
-    z-index: 2;
-    right: 0;
-    text-align: center;
-}
-
-#cart-popin h3 {
-font-size: 1.5em;
-    font-family: 'Anton', sans-serif;
-}
-
-.product_cart_popin_img {
-    width: 100px;
-}
-
-#product_cart_popin_bottom {
-    border-top: solid #e0e0e0 2px;
-}

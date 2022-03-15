@@ -14,7 +14,7 @@ header h1 {
     padding-bottom: 0.15em;
 }
 
-header li {
+header li:not(:last-child) {
     padding-inline: 15px;
     font-family: 'Anton', sans-serif;
     font-size: 1.2em;
@@ -30,13 +30,66 @@ header a:hover {
 }
 
 header ul {
-    width: 100%;
-    height: min-content;
+    height: 100%;
+    padding-bottom: 0;
 }
 
+header ul li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-@media only screen and (max-width:992px) {
+header ul li:not(:last-child) {
+    padding-bottom: 0.6em;
+}
+
+#minicart {
+    height: 100%;
+    padding-bottom: 0;
+    padding-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*cart poppin*/
+#cart-popin {
+    background: white;
+    width: 350px;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    text-align: center;
+    top: 96px;
+}
+
+#cart-popin h3 {
+    font-size: 1.5em;
+    font-family: 'Anton', sans-serif;
+}
+
+.product_cart_popin_img {
+    width: 100px;
+}
+
+#product_cart_popin_bottom {
+    border-top: solid #e0e0e0 2px;
+}
+
+@media only screen and (max-width:991px) {
     header {
         height: inherit;
+    }
+
+    #cart-popin {
+        top: 13.1em;;
+    }
+
+    #minicart {
+        height: 100%;
+        padding-bottom: 1em;
+        padding-right: 1em;
     }
 }
