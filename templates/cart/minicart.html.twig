@@ -1,8 +1,8 @@
-<div id="cart-popin" class="animate__animated animate__fadeIn  d-none d-flex flex-column py-3">
-    {% if not cart %}
-        {% set cart = app.session.get('cart') %}
-        <div>not cart</div>
-    {% endif %}
+<div id="cart-popin" class="animate__animated animate__fadeIn d-none d-flex flex-column py-3">
+{#    {% if not cart %}#}
+{#        {% set cart = app.session.get('cart') %}#}
+{#        <div>not cart</div>#}
+{#    {% endif %}#}
     {% set products = cart['items'] ?? '' %}
     {% set totalCart = cart['total_cart']  ?? ''%}
 

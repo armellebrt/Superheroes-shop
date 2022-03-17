@@ -16,26 +16,33 @@
 {% block body %}
     {% block admin_sidebar %}
         <nav id="sidebar" class="col-lg-2 col-xl-2 col-12 d-block mb-3 mb-lg-0 mb-xl-0 sidebar">
-            <!-- Top Navigation Menu -->
+
+        {#            responsive navbar  #}
         <div class="d-flex flex-column d-lg-none d-xl-none d-block">
-            <a href="{{ path('home') }}" class="mx-auto d-flex align-items-center"><i id="backhome-icon" class="bi bi-arrow-bar-left"></i> Retour à l'accueil</a>
             <div id="responsive_admin_navbar" class="topnav">
-                <a class="nav-link active" href="{{ path('admin') }}">
+                <a class="nav-link" href="{{ path('admin') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                     Tableau de bord
                 </a>
-                <!-- Navigation links (hidden by default) -->
                 <div id="myLinks">
-                    <li class="nav-item" {% if app.request.get('_route') == 'products_index' %} class="active" {% endif %}>
+                    <li class="nav-item"
+                            {% if app.request.get('_route') == 'products_index' %} class="active" {% endif %}>
                         <a class="nav-link" href="/admin/products">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                             Produits
                         </a>
                     </li>
-                    <li class="nav-item" {% if app.request.get('_route') == 'users_index' %} class="active" {% endif %}>
+                    <li class="nav-item"
+                            {% if app.request.get('_route') == 'users_index' %} class="active" {% endif %}>
                         <a class="nav-link" href="/admin/users">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                             Utilisateurs
+                        </a>
+                    </li>
+                    <li class="nav-item bg-black">
+                        <a href="{{ path('home') }}" class="p-2 d-flex align-items-center">
+                            <i id="backhome-icon" class="bi bi-arrow-bar-left"></i>
+                            Retour à l'accueil
                         </a>
                     </li>
                 </div>
@@ -44,6 +51,7 @@
                 </a>
             </div>
         </div>
+        {#         end responsive navbar  #}
 
             <div class="sidebar-sticky d-lg-block d-xl-block d-none">
                 <ul class="nav flex-column">

@@ -21,7 +21,8 @@
         </p>
     </div>
 
-    <div id="products_card_container" class="d-flex flex-wrap mx-auto justify-content-evenly">
+    <div id="products_card_container" class="d-flex flex-wrap mx-auto justify-content-lg-between
+    justify-content-md-evenly justify-content-center">
         {% for product in products %}
             {% set stock = product.stock %}
 {#            I put the products with stock on top of those out-of-stock #}

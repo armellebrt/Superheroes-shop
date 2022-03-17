@@ -15,7 +15,7 @@ header h1 {
 }
 
 header li:not(:last-child) {
-    padding-inline: 15px;
+    padding-inline: 12px;
     font-family: 'Anton', sans-serif;
     font-size: 1.2em;
 }
@@ -91,5 +91,9 @@ header ul li:not(:last-child) {
         height: 100%;
         padding-bottom: 1em;
         padding-right: 1em;
+    }
+
+    #cart-navbar-icon > i {
+        font-size: 1.6em !important;
     }
 }
