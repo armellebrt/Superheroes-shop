@@ -84,7 +84,9 @@ header ul li:not(:last-child) {
     }
 
     #cart-popin {
-        top: 13.1em;;
+        top: 13.1em;
+        width: 100%;
+        min-height: 250px;
     }
 
     #minicart {
@@ -95,5 +97,11 @@ header ul li:not(:last-child) {
 
     #cart-navbar-icon > i {
         font-size: 1.6em !important;
+    }
+}
+
+@media only screen and (max-width:429px) {
+    #cart-popin {
+        top: 17.9em;
     }
 }
